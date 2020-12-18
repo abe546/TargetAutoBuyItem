@@ -1,8 +1,6 @@
 import org.openqa.selenium.WebDriver;
 
-import static util.UtilityStrings.FUNYONS_URL;
-import static util.UtilityStrings.PS5_CONTROLLER_URL;
-import static util.UtilityStrings.PS5_DIGITAL_URL;
+import static util.UtilityStrings.*;
 
 public class Application {
 
@@ -48,6 +46,9 @@ public class Application {
         /*
          * THE FINAL STEP, PLACE ORDER, THIS WILL PLACE AN ORDER FOR THE MAXIMUM ALLOWED AMOUNT OF ITEMS
          */
+        System.out.println("ORDER WOULD HAVE BEEN PLACE AT THIS POINT");
+
+        Thread.sleep(30000);
 
         driver = targetOptions.placeOrder(driver);
 
