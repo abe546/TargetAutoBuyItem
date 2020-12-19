@@ -13,11 +13,11 @@ public class AmazonOptions
 
         int waitCount =0;
 
-        while(waitCount < 20 && driver.findElements(By.id(AMAZON_BUY_NOW_BUTTON_ID)).isEmpty())
+        while(waitCount < 60 && driver.findElements(By.id(AMAZON_BUY_NOW_BUTTON_ID)).isEmpty())
         {
             Thread.sleep(500);
 
-            if(waitCount == 19)
+            if(waitCount == 59)
             {
                 System.out.println("Couldn't find buy now button, out of stock. Refreshing page to try again "+ Instant.now());
                 waitCount = 0;
