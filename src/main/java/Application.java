@@ -46,10 +46,7 @@ public class Application {
         /*
          * THE FINAL STEP, PLACE ORDER, THIS WILL PLACE AN ORDER FOR THE MAXIMUM ALLOWED AMOUNT OF ITEMS
          */
-        System.out.println("ORDER WOULD HAVE BEEN PLACE AT THIS POINT");
-
-        Thread.sleep(30000);
-
+     
         driver = targetOptions.placeOrder(driver);
 
         System.out.println("ORDER WOULD HAVE BEEN PLACE AT THIS POINT");
