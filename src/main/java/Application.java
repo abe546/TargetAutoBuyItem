@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 
+import static util.UserCredentials.TARGET_CC_CVV_SECRET;
 import static util.UtilityStrings.*;
 
 public class Application {
@@ -23,8 +24,10 @@ public class Application {
     * */
     public static void main(String[] args) throws InterruptedException {
         System.out.println("HELLO WORLD: ");
+        System.out.println("CURRENT CVV : "+TARGET_CC_CVV_SECRET);
 
-        driver = openWebPage.openPage(PS5_DIGITAL_URL);
+        driver = openWebPage.openPage(PS5_PHYSICAL_URL);
+
 
         //Forced to manually login for security purposed (Target forces 401 otherwise)
         Thread.sleep(30000);//2 Minute sleep
