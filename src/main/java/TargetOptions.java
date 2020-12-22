@@ -86,8 +86,7 @@ public class TargetOptions {
         return driver;
     }
 
-    public WebDriver clickQuantity(WebDriver driver)
-    {
+    public WebDriver clickQuantity(WebDriver driver) throws InterruptedException {
         wait = new WebDriverWait(driver, 20);
 
         wait.until(presenceOfElementLocated(By.cssSelector(TARGET_QUANTITY_DROP_DOWN_CSS)));
@@ -97,12 +96,20 @@ public class TargetOptions {
                 .findElement(By.xpath(TARGET_QUANTITY_DROP_DOWN_XPATH))
                 .findElements(By.tagName(TARGET_QUANTITY_OPTION_TAG));
 
-        if(qtyDropDownInfo.isEmpty())
+        while (qtyDropDownInfo.isEmpty())
         {
-            //ISSUE
-            logger.error("EMPTY QUANTIY INFO - "+TARGET_QUANTITY_DROP_DOWN_XPATH + TARGET_QUANTITY_OPTION_TAG);
+            //Wait five seconds, then refresh
+            driver.navigate().refresh();
 
-            //TODO add remediation step
+            Thread.sleep(1000);
+
+            wait = new WebDriverWait(driver, 5);
+
+            wait.until(presenceOfElementLocated(By.cssSelector(TARGET_QUANTITY_DROP_DOWN_CSS)));
+
+            qtyDropDownInfo = driver
+                    .findElement(By.xpath(TARGET_QUANTITY_DROP_DOWN_XPATH))
+                    .findElements(By.tagName(TARGET_QUANTITY_OPTION_TAG));
         }
 
         WebElement qtyDropDown = driver.findElement(By.cssSelector(TARGET_QUANTITY_DROP_DOWN_CSS));
@@ -132,6 +139,22 @@ public class TargetOptions {
         Thread.sleep(500);
 
         checkOutButton.click();
+
+        int count =0;
+
+        while (!driver.findElements(By.cssSelector(TARGET_CHECKOUT_CART_CSS)).isEmpty())
+        {
+            checkOutButton.click();
+            //Click every 250 milliseconds
+            Thread.sleep(250);
+            count++;
+
+            if(count == 120) //If we've been clicking checkout cart for 30 seconds refresh
+            {
+                driver.navigate().refresh();
+                count = 0;
+            }
+        }
 
         return driver;
     }
@@ -231,6 +254,22 @@ public class TargetOptions {
         Thread.sleep(1000);
 
         placeOrder.click();
+
+        int count =0;
+        while (!driver.findElements(By.xpath(TARGET_PLACE_ORDER_XPATH)).isEmpty())
+        {
+            //As long as place order button is visible, click it every 250 milliseconds
+            placeOrder.click();
+            Thread.sleep(250);
+
+            //After 5 minutes of clicking, refresh the page
+            if(count == 1200)
+            {
+                count =0;
+                driver.navigate().refresh();
+            }
+
+        }
 
         return driver;
     }

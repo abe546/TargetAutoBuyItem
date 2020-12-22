@@ -8,6 +8,7 @@ public class UtilityStrings {
     //URLS OF INTEREST
 
     public static final String FUNYONS_URL = "https://www.target.com/p/funyuns-onion-flavored-rings-6oz/-/A-13326808#lnk=sametab";
+    public static final String PRINGLES_URL = "https://www.target.com/p/pringles-original-flavored-potato-crisps-chips-5-2oz/-/A-13053936#lnk=sametab";
     public static final String PS5_CONTROLLER_URL = "https://www.target.com/p/dualsense-wireless-controller-for-playstation-5/-/A-81114477";
     public static final String PS5_DIGITAL_URL = "https://www.target.com/p/playstation-5-digital-edition-console/-/A-81114596";
     public static final String PS5_PHYSICAL_URL = "https://www.target.com/p/playstation-5-console/-/A-81114595";
