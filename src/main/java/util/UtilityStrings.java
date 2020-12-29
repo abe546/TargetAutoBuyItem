@@ -39,6 +39,8 @@ public class UtilityStrings {
     public static final String TARGET_CC_CVV_ID = "creditCardInput-cvv";
     //Place order button
     public static final String TARGET_PLACE_ORDER_XPATH = "//*[@data-test='placeOrderButton']";
+    //Continue error button
+    public static final String TARGET_CONTINUE_ERROR_BUTTON_XPATH = "//*[@data-test='errorContent-okButton']";
 
 
 
